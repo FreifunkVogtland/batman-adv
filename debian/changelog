@@ -1,0 +1,5 @@
+batman-adv (2018.1-1) stretch; urgency=low
+
+  * New upstream version
+
+ -- Sven Eckelmann <sven@narfation.org>  Sat, 20 Apr 2019 00:09:15 +0200

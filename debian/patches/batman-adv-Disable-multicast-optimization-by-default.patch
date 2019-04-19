@@ -1,0 +1,24 @@
+From: Sven Eckelmann <sven@narfation.org>
+Date: Thu, 20 Apr 2017 19:03:40 +0200
+Subject: batman-adv: Disable multicast optimization by default
+
+The optimization seems to cause some kind of CRC problem between two nodes.
+This causes a lot of TT full requests. Disable it to avoid this problem (it
+isn't enabled via batctl anyway).
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index fe97d0a..9b51541 100644
+--- a/Makefile
++++ b/Makefile
+@@ -28,7 +28,7 @@ export CONFIG_BATMAN_ADV_DAT=y
+ # B.A.T.M.A.N network coding (catwoman):
+ export CONFIG_BATMAN_ADV_NC=n
+ # B.A.T.M.A.N. multicast optimizations:
+-export CONFIG_BATMAN_ADV_MCAST=y
++export CONFIG_BATMAN_ADV_MCAST=n
+ # B.A.T.M.A.N. V routing algorithm (experimental):
+ export CONFIG_BATMAN_ADV_BATMAN_V=n
+ 

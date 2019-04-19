@@ -1,0 +1,37 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: batman-adv
+Upstream-Contact: Marek Lindner <mareklindner@neomailbox.ch>
+Source: https://www.open-mesh.org/
+
+Files: *
+Copyright: 2007-2018, Andreas Langer <an.langer@gmx.de>
+           2006-2018, Marek Lindner <mareklindner@neomailbox.ch>
+           2006-2018, Simon Wunderlich <sw@simonwunderlich.de>
+           2009-2018, Andrew Lunn <andrew@lunn.ch>
+           2013-2018, Antonio Quartulli <a@unstable.cc>
+License: GPL-2
+
+Files: debian/*
+Copyright: 2008-2019, Sven Eckelmann <sven@narfation.org>
+License: GPL-2
+
+License: GPL-2
+ This program is free software; you can redistribute it
+ and/or modify it under the terms of the GNU General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License.
+ .
+ This program is distributed in the hope that it will be
+ useful, but WITHOUT ANY WARRANTY; without even the implied
+ warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ PURPOSE.  See the GNU General Public License for more
+ details.
+ .
+ You should have received a copy of the GNU General Public
+ License along with this package; if not, write to the Free
+ Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+ Boston, MA  02110-1301 USA
+ .
+ On Debian systems, the full text of the GNU General Public
+ License version 2 can be found in the file
+ `/usr/share/common-licenses/GPL-2'.

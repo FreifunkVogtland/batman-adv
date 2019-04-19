@@ -1,0 +1,28 @@
+Source: batman-adv
+Section: kernel
+Priority: optional
+Maintainer: Sven Eckelmann <sven@narfation.org>
+Standards-Version: 4.3.0
+Homepage: https://www.open-mesh.org/
+Vcs-Git: https://github.com/FreifunkVogtland/batman-adv.git -b debian/stretch
+Vcs-Browser: https://github.com/FreifunkVogtland/batman-adv
+Build-Depends:
+ debhelper (>= 12),
+ dkms (>= 2.1.1.1-2),
+
+Package: batman-adv-dkms
+Architecture: all
+Depends:
+ ${misc:Depends},
+Recommends:
+ batctl,
+Description: DKMS Source for the batman-advanced kernel module
+ This package contains the source for the batman-adv-source kernel modules,
+ packaged with appropriate configuration for DKMS to build new modules
+ dynamically.
+ .
+ B.A.T.M.A.N. (better approach to mobile ad-hoc networking) is a new routing
+ protocol for multi-hop ad-hoc mesh networks. B.A.T.M.A.N.-advanced is the
+ implementation of this protocol on ISO/OSI Layer 2, allowing mesh networks to
+ be used as a virtual switch. With this approach, LANs and WANs can be easily
+ integrated, and more protocols (like DHCP, IPv6) are supported.

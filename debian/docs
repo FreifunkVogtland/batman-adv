@@ -1,0 +1,4 @@
+Documentation/networking/batman-adv.rst
+README.external.rst
+Documentation/ABI/testing/sysfs-class-net-batman-adv
+Documentation/ABI/testing/sysfs-class-net-mesh

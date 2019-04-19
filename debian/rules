@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+include /usr/share/dpkg/pkg-info.mk
+
+REVISION="ffv-$(DEB_VERSION)"
+
+binary binary-arch binary-indep build build-arch build-indep clean install install-arch install-indep:
+	dh $@ --with dkms
+
+override_dh_install:
+	dh_install \
+		compat.h \
+		compat-include \
+		compat-patches \
+		compat-sources \
+		gen-compat-autoconf.sh \
+		include \
+		Makefile \
+		net \
+		usr/src/batman-adv-$(REVISION)
+
+override_dh_dkms:
+	dh_dkms -V $(REVISION)
+
+override_dh_auto_configure override_dh_auto_build override_dh_auto_test override_dh_auto_install override_dh_auto_clean:
+	# nothing
+
+.PHONY: binary binary-arch binary-indep build build-arch build-indep clean install install-arch install-indep \
+	override_dh_dkms override_dh_auto_configure override_dh_auto_build override_dh_auto_test override_dh_auto_install override_dh_auto_clean

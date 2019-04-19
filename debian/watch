@@ -1,0 +1,3 @@
+version=3
+opts="uversionmangle=s/-(alpha|beta|rc)/~$1/,pgpsigurlmangle=s/$/.asc/" \
+ https://downloads.open-mesh.org/batman/stable/sources/batman-adv/batman-adv-(.*).tar.gz
