@@ -35,7 +35,7 @@ diff --git a/net/batman-adv/debugfs.c b/net/batman-adv/debugfs.c
 index 7e5de7b..87479c6 100644
 --- a/net/batman-adv/debugfs.c
 +++ b/net/batman-adv/debugfs.c
-@@ -433,6 +433,26 @@ out:
+@@ -433,6 +433,26 @@ int batadv_debugfs_add_meshif(struct net_device *dev)
  	return -ENOMEM;
  }
  

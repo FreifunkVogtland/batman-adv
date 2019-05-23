@@ -32,7 +32,7 @@ diff --git a/net/batman-adv/bat_v_elp.c b/net/batman-adv/bat_v_elp.c
 index 83b4665..9aa3c7b 100644
 --- a/net/batman-adv/bat_v_elp.c
 +++ b/net/batman-adv/bat_v_elp.c
-@@ -339,19 +339,21 @@ out:
+@@ -339,19 +339,21 @@ static void batadv_v_elp_periodic_work(struct work_struct *work)
   */
  int batadv_v_elp_iface_enable(struct batadv_hard_iface *hard_iface)
  {

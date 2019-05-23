@@ -108,7 +108,7 @@ index 2895e3b..f8cc4a5 100644
  static void batadv_dat_purge(struct work_struct *work);
  
  /**
-@@ -1437,6 +1483,359 @@ out:
+@@ -1437,6 +1483,359 @@ bool batadv_dat_snoop_incoming_arp_reply(struct batadv_priv *bat_priv,
  	return dropped;
  }
  

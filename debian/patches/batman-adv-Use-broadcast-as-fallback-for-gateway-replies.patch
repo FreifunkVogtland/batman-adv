@@ -22,7 +22,7 @@ diff --git a/net/batman-adv/soft-interface.c b/net/batman-adv/soft-interface.c
 index 97e2890..7182af6 100644
 --- a/net/batman-adv/soft-interface.c
 +++ b/net/batman-adv/soft-interface.c
-@@ -313,6 +313,18 @@ send:
+@@ -313,6 +313,18 @@ static int batadv_interface_tx(struct sk_buff *skb,
  			if (forw_mode == BATADV_FORW_SINGLE)
  				do_bcast = false;
  		}

@@ -45,7 +45,7 @@ index 4229b01..7e5de7b 100644
  #include <linux/debugfs.h>
  #include <linux/err.h>
  #include <linux/errno.h>
-@@ -343,6 +344,25 @@ out:
+@@ -343,6 +344,25 @@ int batadv_debugfs_add_hardif(struct batadv_hard_iface *hard_iface)
  	return -ENOMEM;
  }
  

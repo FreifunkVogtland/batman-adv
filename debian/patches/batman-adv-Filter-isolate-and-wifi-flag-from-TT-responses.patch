@@ -13,7 +13,7 @@ requests.
  1 file changed, 15 insertions(+), 17 deletions(-)
 
 diff --git a/net/batman-adv/translation-table.c b/net/batman-adv/translation-table.c
-index 359ec1a..2842d91 100644
+index 9fa5389..9dc1e13 100644
 --- a/net/batman-adv/translation-table.c
 +++ b/net/batman-adv/translation-table.c
 @@ -1709,6 +1709,10 @@ static bool batadv_tt_global_add(struct batadv_priv *bat_priv,

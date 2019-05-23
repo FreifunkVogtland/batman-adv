@@ -69,7 +69,7 @@ index 7fa3a0a..23f9c21 100644
  				goto out_remove;
  			batadv_tt_global_del_orig_list(tt_global_entry);
  			goto add_orig_entry;
-@@ -2880,23 +2887,46 @@ unlock:
+@@ -2880,23 +2887,46 @@ batadv_tt_req_node_new(struct batadv_priv *bat_priv,
  }
  
  /**

@@ -171,7 +171,7 @@ index 09427fc..0b21bde 100644
  	&batadv_attr_elp_interval,
  	&batadv_attr_throughput_override,
 diff --git a/net/batman-adv/types.h b/net/batman-adv/types.h
-index 476b052..435d6fa 100644
+index 6d07898..6ab9f66 100644
 --- a/net/batman-adv/types.h
 +++ b/net/batman-adv/types.h
 @@ -227,6 +227,7 @@ struct batadv_hard_iface {

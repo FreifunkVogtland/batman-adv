@@ -34,7 +34,7 @@ index 8b198ee..140c61a 100644
  #include <linux/netdevice.h>
  #include <linux/netlink.h>
  #include <linux/rculist.h>
-@@ -348,6 +349,9 @@ out:
+@@ -348,6 +349,9 @@ void batadv_gw_check_election(struct batadv_priv *bat_priv,
   * @bat_priv: the bat priv with all the soft interface information
   * @orig_node: originator announcing gateway capabilities
   * @gateway: announced bandwidth information

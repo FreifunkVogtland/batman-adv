@@ -48,7 +48,7 @@ index 12a2b7d..d21624c 100644
  	atomic_inc(&tt_global->orig_list_count);
  
  sync_flags:
-@@ -1647,6 +1647,8 @@ sync_flags:
+@@ -1647,6 +1647,8 @@ batadv_tt_global_orig_entry_add(struct batadv_tt_global_entry *tt_global,
  out:
  	if (orig_entry)
  		batadv_tt_orig_list_entry_put(orig_entry);
