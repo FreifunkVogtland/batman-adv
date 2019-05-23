@@ -1,3 +1,9 @@
+batman-adv (2018.1-2) stretch; urgency=medium
+
+  * Merge bugfixes from 2019.2
+
+ -- Sven Eckelmann <sven@narfation.org>  Thu, 23 May 2019 20:49:19 +0200
+
 batman-adv (2018.1-1) stretch; urgency=low
 
   * New upstream version
