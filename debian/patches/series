@@ -28,6 +28,7 @@ batman-adv-Reduce-tt_local-hash-refcnt-only-for-removed-e.patch
 batman-adv-Reduce-tt_global-hash-refcnt-only-for-removed-.patch
 batman-adv-mcast-fix-multicast-tt-tvlv-worker-locking.patch
 batman-adv-fix-for-leaked-TVLV-handler.patch
+batman-adv-Fix-duplicated-OGMs-on-NETDEV_UP.patch
 batman-adv-compat-initialize-sinfo-in-cfg80211_get_statio.patch
 batman-adv-introduce-no_rebroadcast-option.patch
 batman-adv-Print-bcast_full-errors-via-ratelimited-functi.patch
