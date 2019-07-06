@@ -10,7 +10,7 @@ isn't enabled via batctl anyway).
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index fe97d0a..9b51541 100644
+index bccea1b..3eef7ca 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -28,7 +28,7 @@ export CONFIG_BATMAN_ADV_DAT=y
@@ -19,6 +19,6 @@ index fe97d0a..9b51541 100644
  # B.A.T.M.A.N. multicast optimizations:
 -export CONFIG_BATMAN_ADV_MCAST=y
 +export CONFIG_BATMAN_ADV_MCAST=n
+ # B.A.T.M.A.N. tracing support:
+ export CONFIG_BATMAN_ADV_TRACING=n
  # B.A.T.M.A.N. V routing algorithm (experimental):
- export CONFIG_BATMAN_ADV_BATMAN_V=n
- 

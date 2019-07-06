@@ -17,10 +17,10 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/87445d81c360a5
  1 file changed, 2 insertions(+)
 
 diff --git a/net/batman-adv/translation-table.c b/net/batman-adv/translation-table.c
-index 359ec1a..9fa5389 100644
+index 26c4e24..abad64e 100644
 --- a/net/batman-adv/translation-table.c
 +++ b/net/batman-adv/translation-table.c
-@@ -3821,6 +3821,8 @@ static void batadv_tt_purge(struct work_struct *work)
+@@ -3826,6 +3826,8 @@ static void batadv_tt_purge(struct work_struct *work)
   */
  void batadv_tt_free(struct batadv_priv *bat_priv)
  {

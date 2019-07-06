@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: GPL-2.0 */
-/* Copyright (C) 2007-2018  B.A.T.M.A.N. contributors:
+/* Copyright (C) 2007-2019  B.A.T.M.A.N. contributors:
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -24,26 +24,17 @@
 
 #include <linux/version.h>
 #include <linux/types.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 7, 0)
 #include_next <uapi/linux/eventpoll.h>
-#else
-#include <linux/eventpoll.h>
-#endif
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0)
 
+#ifndef EPOLLIN
 #define EPOLLIN		(__force __poll_t)0x00000001
-#define EPOLLPRI	(__force __poll_t)0x00000002
-#define EPOLLOUT	(__force __poll_t)0x00000004
-#define EPOLLERR	(__force __poll_t)0x00000008
-#define EPOLLHUP	(__force __poll_t)0x00000010
-#define EPOLLNVAL	(__force __poll_t)0x00000020
+#endif
+
+#ifndef EPOLLRDNORM
 #define EPOLLRDNORM	(__force __poll_t)0x00000040
-#define EPOLLRDBAND	(__force __poll_t)0x00000080
-#define EPOLLWRNORM	(__force __poll_t)0x00000100
-#define EPOLLWRBAND	(__force __poll_t)0x00000200
-#define EPOLLMSG	(__force __poll_t)0x00000400
-#define EPOLLRDHUP	(__force __poll_t)0x00002000
+#endif
 
 #endif /* < KERNEL_VERSION(4, 12, 0) */
 

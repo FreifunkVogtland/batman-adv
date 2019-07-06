@@ -1,5 +1,81 @@
 .. SPDX-License-Identifier: GPL-2.0
 
+2019.1 (2019-03-28)
+===================
+
+* support latest kernels (3.16 - 5.1)
+* coding style cleanups and refactoring
+* implement meshif, hardif and vlan interface via netlink
+* snoop DHCP ACKs to improve DAT cache efficiency
+* bugs squashed:
+
+  - avoid potential reference counter underflows and use-after free errors for
+    several objects
+  - fix GCC warning when B.A.T.M.A.N. V is build in but cfg80211 is not
+    available
+  - reject too small VLAN packets before they are processed further
+
+2019.0 (2019-02-01)
+===================
+
+* support latest kernels (3.16 - 5.0)
+* coding style cleanups and refactoring
+* allow to enable debug tracing without full batman-adv debugfs support
+* enable inconsistency reporting for most netlink dump commands
+* bugs squashed:
+
+  - avoid unnecessary kernel warning (panic) during detection of interface loops
+  - work around incorrect ethernet header offset in transmit code path
+
+2018.4 (2018-11-14)
+===================
+
+* support latest kernels (3.16 - 4.20)
+* coding style cleanups and refactoring
+* improve tx performance by avoiding unnecessary locking
+* add help messages regarding deprecation of debugfs files
+* support for debug message tracepoints
+* explicit ELP padding to allow TVLVs in the future
+* bugs squashed:
+
+  - fix skb_over_panic for merged fragments with small tailroom
+
+2018.3 (2018-09-14)
+===================
+
+* support latest kernels (3.16 - 4.19)
+* coding style cleanups and refactoring
+* enable the DAT by default for the in-tree Linux module
+* bugs squashed:
+
+  - fix segfault when writing to sysfs files under batman_adv/ with
+    CONFIG_BATMAN_ADV_DEBUG enabled
+  - avoid information leakage in probe ELP packets
+  - adjust reference counters when queue_work fails
+  - prevent duplicated entries in various lists
+
+
+2018.2 (2018-07-10)
+===================
+
+* support latest kernels (3.16 - 4.18)
+* dropped support for kernels < 3.16 (note the removed build directory)
+* coding style cleanups and refactoring
+* avoid old nodes disabling multicast optimizations completely
+* disable ethtool based B.A.T.M.A.N. V speed detection for virtual interfaces
+* enable B.A.T.M.A.N. V compilation by default
+* disable debugfs support by default
+* bugs squashed:
+
+  - fix TT sync flags for intermediate TT responses
+  - avoid race in TT TVLV allocator helper
+  - prevent TT request storms by not sending inconsistent TT TVLVs
+  - fix best gw refcnt after netlink dump
+  - adjust debugfs paths for interfaces after a namechange
+  - fix single entry TT non-sync flag storage
+  - fix multicast TT issues with bogus ROAM flags
+  - work around insufficient memory initialization in cfg80211's station info
+
 2018.1 (2018-04-25)
 ===================
 

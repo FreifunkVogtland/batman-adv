@@ -32,10 +32,10 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/35f6756007af4f
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/net/batman-adv/distributed-arp-table.c b/net/batman-adv/distributed-arp-table.c
-index a60bacf..2895e3b 100644
+index 310a4f3..8d290da 100644
 --- a/net/batman-adv/distributed-arp-table.c
 +++ b/net/batman-adv/distributed-arp-table.c
-@@ -1394,7 +1394,6 @@ bool batadv_dat_snoop_incoming_arp_reply(struct batadv_priv *bat_priv,
+@@ -1444,7 +1444,6 @@ bool batadv_dat_snoop_incoming_arp_reply(struct batadv_priv *bat_priv,
  			   hw_src, &ip_src, hw_dst, &ip_dst,
  			   dat_entry->mac_addr,	&dat_entry->ip);
  		dropped = true;
@@ -43,7 +43,7 @@ index a60bacf..2895e3b 100644
  	}
  
  	/* Update our internal cache with both the IP addresses the node got
-@@ -1403,6 +1402,9 @@ bool batadv_dat_snoop_incoming_arp_reply(struct batadv_priv *bat_priv,
+@@ -1453,6 +1452,9 @@ bool batadv_dat_snoop_incoming_arp_reply(struct batadv_priv *bat_priv,
  	batadv_dat_entry_add(bat_priv, ip_src, hw_src, vid);
  	batadv_dat_entry_add(bat_priv, ip_dst, hw_dst, vid);
  

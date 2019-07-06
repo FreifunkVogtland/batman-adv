@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: GPL-2.0 */
-/* Copyright (C) 2007-2018  B.A.T.M.A.N. contributors:
+/* Copyright (C) 2007-2019  B.A.T.M.A.N. contributors:
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -24,17 +24,6 @@
 
 #include <linux/version.h>
 #include_next <linux/timer.h>
-
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 7, 0)
-
-#define __setup_timer(_timer, _fn, _data, _flags) \
-	do { \
-		init_timer(_timer); \
-		(_timer)->function = (_fn); \
-		(_timer)->data = (_data); \
-	} while (0)
-
-#endif /* < KERNEL_VERSION(3, 7, 0) */
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0)
 

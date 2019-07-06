@@ -31,10 +31,10 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/b736cf8119cfbc
  3 files changed, 9 insertions(+), 8 deletions(-)
 
 diff --git a/net/batman-adv/main.c b/net/batman-adv/main.c
-index 69c0d85..79b8a2d 100644
+index 7575087..f872578 100644
 --- a/net/batman-adv/main.c
 +++ b/net/batman-adv/main.c
-@@ -160,6 +160,7 @@ int batadv_mesh_init(struct net_device *soft_iface)
+@@ -161,6 +161,7 @@ int batadv_mesh_init(struct net_device *soft_iface)
  	spin_lock_init(&bat_priv->tt.commit_lock);
  	spin_lock_init(&bat_priv->gw.list_lock);
  #ifdef CONFIG_BATMAN_ADV_MCAST
@@ -43,7 +43,7 @@ index 69c0d85..79b8a2d 100644
  #endif
  	spin_lock_init(&bat_priv->tvlv.container_list_lock);
 diff --git a/net/batman-adv/multicast.c b/net/batman-adv/multicast.c
-index a35f597..39640d3 100644
+index f91b1b6..1b985ab 100644
 --- a/net/batman-adv/multicast.c
 +++ b/net/batman-adv/multicast.c
 @@ -325,8 +325,6 @@ static void batadv_mcast_mla_list_free(struct hlist_head *mcast_list)
@@ -94,12 +94,12 @@ index a35f597..39640d3 100644
  }
  
 diff --git a/net/batman-adv/types.h b/net/batman-adv/types.h
-index 476b052..6d07898 100644
+index 080a20f..6c1236b 100644
 --- a/net/batman-adv/types.h
 +++ b/net/batman-adv/types.h
-@@ -1215,6 +1215,11 @@ struct batadv_priv_mcast {
- 	/** @num_disabled: number of nodes that have no mcast tvlv */
- 	atomic_t num_disabled;
+@@ -1224,6 +1224,11 @@ struct batadv_priv_mcast {
+ 	/** @bridged: whether the soft interface has a bridge on top */
+ 	unsigned char bridged:1;
  
 +	/**
 +	 * @mla_lock: a lock protecting mla_list and mla_flags

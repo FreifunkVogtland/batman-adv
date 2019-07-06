@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: GPL-2.0 */
-/* Copyright (C) 2007-2018  B.A.T.M.A.N. contributors:
+/* Copyright (C) 2007-2019  B.A.T.M.A.N. contributors:
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -24,24 +24,6 @@
 
 #include <linux/version.h>
 #include_next <linux/netlink.h>
-
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 7, 0)
-
-#include <net/scm.h>
-
-struct batadv_netlink_skb_parms {
-	struct ucred		creds;		/* Skb credentials	*/
-	union {
-		__u32		portid;
-		__u32		pid;
-	};
-	__u32			dst_group;
-};
-
-#undef NETLINK_CB
-#define NETLINK_CB(skb) (*(struct batadv_netlink_skb_parms *)&((skb)->cb))
-
-#endif /* < KERNEL_VERSION(3, 7, 0) */
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 7, 0)
 

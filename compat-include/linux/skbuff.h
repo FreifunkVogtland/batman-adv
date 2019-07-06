@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: GPL-2.0 */
-/* Copyright (C) 2007-2018  B.A.T.M.A.N. contributors:
+/* Copyright (C) 2007-2019  B.A.T.M.A.N. contributors:
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -25,38 +25,6 @@
 #include <linux/version.h>
 #include_next <linux/skbuff.h>
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 8, 0)
-
-/* hack for not correctly set mac_len. This may happen for some special
- * configurations like batman-adv on VLANs.
- *
- * This is pretty dirty, but we only use skb_share_check() in main.c right
- * before mac_len is checked, and the recomputation shouldn't hurt too much.
- */
-#define skb_share_check(skb, b) \
-	({ \
-		struct sk_buff *_t_skb; \
-		_t_skb = skb_share_check(skb, b); \
-		if (_t_skb) \
-			skb_reset_mac_len(_t_skb); \
-		_t_skb; \
-	})
-
-#endif /* < KERNEL_VERSION(3, 8, 0) */
-
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 11, 0)
-
-/* older kernels still need to call skb_abort_seq_read() */
-#define skb_seq_read(consumed, data, st) \
-	({ \
-		int __len = skb_seq_read(consumed, data, st); \
-		if (__len == 0) \
-			skb_abort_seq_read(st); \
-		__len; \
-	})
-
-#endif /* < KERNEL_VERSION(3, 11, 0) */
-
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 16, 0)
 
 #define pskb_copy_for_clone pskb_copy
@@ -79,13 +47,16 @@ struct sk_buff *skb_checksum_trimmed(struct sk_buff *skb,
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 5, 0)
 
-static inline void skb_postpush_rcsum(struct sk_buff *skb,
-				      const void *start, unsigned int len)
+static inline void batadv_skb_postpush_rcsum(struct sk_buff *skb,
+					     const void *start,
+					     unsigned int len)
 {
 	if (skb->ip_summed == CHECKSUM_COMPLETE)
 		skb->csum = csum_block_add(skb->csum,
 					   csum_partial(start, len, 0), 0);
 }
+
+#define skb_postpush_rcsum batadv_skb_postpush_rcsum
 
 #endif /* < KERNEL_VERSION(4, 5, 0) */
 
