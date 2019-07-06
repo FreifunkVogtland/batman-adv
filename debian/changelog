@@ -1,6 +1,7 @@
 batman-adv (2019.1-1) UNRELEASED; urgency=medium
 
   * New Upstream Version
+  * Switch to Debian Buster branch
 
  -- Sven Eckelmann <sven@narfation.org>  Sat, 06 Jul 2019 21:14:50 +0200
 

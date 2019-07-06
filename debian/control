@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Sven Eckelmann <sven@narfation.org>
 Standards-Version: 4.3.0
 Homepage: https://www.open-mesh.org/
-Vcs-Git: https://github.com/FreifunkVogtland/batman-adv.git -b debian/stretch
+Vcs-Git: https://github.com/FreifunkVogtland/batman-adv.git -b debian/buster
 Vcs-Browser: https://github.com/FreifunkVogtland/batman-adv
 Build-Depends:
  debhelper (>= 12),
