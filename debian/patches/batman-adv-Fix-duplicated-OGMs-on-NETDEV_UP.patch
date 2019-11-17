@@ -25,7 +25,7 @@ Fixes: 0d8468553c3c ("batman-adv: remove ogm_emit and ogm_schedule API calls")
 Reported-by: Linus Lüssing <linus.luessing@c0d3.blue>
 Signed-off-by: Sven Eckelmann <sven@narfation.org>
 
-Forwarded: https://patchwork.open-mesh.org/patch/17934/
+Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/c92331e0df3c0c5645ee5a897eb018c5da5e4aa5
 ---
  net/batman-adv/bat_iv_ogm.c     | 4 ++--
  net/batman-adv/hard-interface.c | 3 +++
@@ -33,10 +33,10 @@ Forwarded: https://patchwork.open-mesh.org/patch/17934/
  3 files changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/net/batman-adv/bat_iv_ogm.c b/net/batman-adv/bat_iv_ogm.c
-index de61091..267418b 100644
+index bd4138d..240ed70 100644
 --- a/net/batman-adv/bat_iv_ogm.c
 +++ b/net/batman-adv/bat_iv_ogm.c
-@@ -2349,7 +2349,7 @@ batadv_iv_ogm_neigh_is_sob(struct batadv_neigh_node *neigh1,
+@@ -2337,7 +2337,7 @@ batadv_iv_ogm_neigh_is_sob(struct batadv_neigh_node *neigh1,
  	return ret;
  }
  
@@ -45,7 +45,7 @@ index de61091..267418b 100644
  {
  	/* begin scheduling originator messages on that interface */
  	batadv_iv_ogm_schedule(hard_iface);
-@@ -2695,8 +2695,8 @@ static void batadv_iv_gw_dump(struct sk_buff *msg, struct netlink_callback *cb,
+@@ -2683,8 +2683,8 @@ static void batadv_iv_gw_dump(struct sk_buff *msg, struct netlink_callback *cb,
  static struct batadv_algo_ops batadv_batman_iv __read_mostly = {
  	.name = "BATMAN_IV",
  	.iface = {
@@ -56,10 +56,10 @@ index de61091..267418b 100644
  		.update_mac = batadv_iv_ogm_iface_update_mac,
  		.primary_set = batadv_iv_ogm_primary_iface_set,
 diff --git a/net/batman-adv/hard-interface.c b/net/batman-adv/hard-interface.c
-index 78db2bd..406b645 100644
+index db5d260..682f031 100644
 --- a/net/batman-adv/hard-interface.c
 +++ b/net/batman-adv/hard-interface.c
-@@ -807,6 +807,9 @@ int batadv_hardif_enable_interface(struct batadv_hard_iface *hard_iface,
+@@ -795,6 +795,9 @@ int batadv_hardif_enable_interface(struct batadv_hard_iface *hard_iface,
  
  	batadv_hardif_recalc_extra_skbroom(soft_iface);
  
@@ -70,10 +70,10 @@ index 78db2bd..406b645 100644
  	return 0;
  
 diff --git a/net/batman-adv/types.h b/net/batman-adv/types.h
-index 6c1236b..559c2d3 100644
+index 267d200..d7843bd 100644
 --- a/net/batman-adv/types.h
 +++ b/net/batman-adv/types.h
-@@ -2136,6 +2136,9 @@ struct batadv_algo_iface_ops {
+@@ -2130,6 +2130,9 @@ struct batadv_algo_iface_ops {
  	/** @enable: init routing info when hard-interface is enabled */
  	int (*enable)(struct batadv_hard_iface *hard_iface);
  

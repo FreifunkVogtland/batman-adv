@@ -25,18 +25,18 @@ wisely and at your own risk!
 
 Signed-off-by: Linus Lüssing <linus.luessing@web.de>
 ---
- .../ABI/testing/sysfs-class-net-batman-adv         | 11 ++++
+ .../ABI/obsolete/sysfs-class-net-batman-adv        | 11 ++++
  net/batman-adv/hard-interface.c                    |  2 +
  net/batman-adv/send.c                              |  4 ++
  net/batman-adv/sysfs.c                             | 59 ++++++++++++++++++++++
  net/batman-adv/types.h                             |  1 +
  5 files changed, 77 insertions(+)
 
-diff --git a/Documentation/ABI/testing/sysfs-class-net-batman-adv b/Documentation/ABI/testing/sysfs-class-net-batman-adv
-index 8981068..738c46d 100644
---- a/Documentation/ABI/testing/sysfs-class-net-batman-adv
-+++ b/Documentation/ABI/testing/sysfs-class-net-batman-adv
-@@ -28,3 +28,14 @@ description:
+diff --git a/Documentation/ABI/obsolete/sysfs-class-net-batman-adv b/Documentation/ABI/obsolete/sysfs-class-net-batman-adv
+index 5bdbc8d..222c782 100644
+--- a/Documentation/ABI/obsolete/sysfs-class-net-batman-adv
++++ b/Documentation/ABI/obsolete/sysfs-class-net-batman-adv
+@@ -30,3 +30,14 @@ description:
                  when estimating the link throughput using this interface.
                  If the value is set to 0 then batman-adv will try to
                  estimate the throughput by itself.
@@ -52,10 +52,10 @@ index 8981068..738c46d 100644
 +                or wired links. Using this option wrongly is going to
 +                break your mesh network, use at your own risk!
 diff --git a/net/batman-adv/hard-interface.c b/net/batman-adv/hard-interface.c
-index 96ef7c7..78db2bd 100644
+index 79d1731..db5d260 100644
 --- a/net/batman-adv/hard-interface.c
 +++ b/net/batman-adv/hard-interface.c
-@@ -949,6 +949,8 @@ batadv_hardif_add_interface(struct net_device *net_dev)
+@@ -937,6 +937,8 @@ batadv_hardif_add_interface(struct net_device *net_dev)
  
  	batadv_v_hardif_init(hard_iface);
  
@@ -65,10 +65,10 @@ index 96ef7c7..78db2bd 100644
  	kref_get(&hard_iface->refcount);
  	list_add_tail_rcu(&hard_iface->list, &batadv_hardif_list);
 diff --git a/net/batman-adv/send.c b/net/batman-adv/send.c
-index 66a8b3e..1985b7f 100644
+index 3ce5f7b..cceaa3d 100644
 --- a/net/batman-adv/send.c
 +++ b/net/batman-adv/send.c
-@@ -944,6 +944,10 @@ static void batadv_send_outstanding_bcast_packet(struct work_struct *work)
+@@ -932,6 +932,10 @@ static void batadv_send_outstanding_bcast_packet(struct work_struct *work)
  		if (neigh_node)
  			batadv_hardif_neigh_put(neigh_node);
  
@@ -80,10 +80,10 @@ index 66a8b3e..1985b7f 100644
  			continue;
  
 diff --git a/net/batman-adv/sysfs.c b/net/batman-adv/sysfs.c
-index 208655c..fa97940 100644
+index 80fc325..a1d1dd8 100644
 --- a/net/batman-adv/sysfs.c
 +++ b/net/batman-adv/sysfs.c
-@@ -139,6 +139,17 @@ struct batadv_attribute batadv_attr_vlan_##_name = {	\
+@@ -123,6 +123,17 @@ struct batadv_attribute batadv_attr_vlan_##_name = {	\
  	.store  = _store,				\
  }
  
@@ -101,7 +101,7 @@ index 208655c..fa97940 100644
  /* Use this, if you have customized show and store functions */
  #define BATADV_ATTR(_name, _mode, _show, _store)	\
  struct batadv_attribute batadv_attr_##_name = {		\
-@@ -322,6 +333,52 @@ ssize_t batadv_show_##_name(struct kobject *kobj,			\
+@@ -314,6 +325,52 @@ ssize_t batadv_show_##_name(struct kobject *kobj,			\
  	static BATADV_ATTR(_name, _mode, batadv_show_##_name,		\
  			   batadv_store_##_name)
  
@@ -154,7 +154,7 @@ index 208655c..fa97940 100644
  static int batadv_store_bool_attr(char *buff, size_t count,
  				  struct net_device *net_dev,
  				  const char *attr_name, atomic_t *attr,
-@@ -1180,6 +1237,7 @@ static ssize_t batadv_show_throughput_override(struct kobject *kobj,
+@@ -1198,6 +1255,7 @@ static ssize_t batadv_show_throughput_override(struct kobject *kobj,
  static BATADV_ATTR(mesh_iface, 0644, batadv_show_mesh_iface,
  		   batadv_store_mesh_iface);
  static BATADV_ATTR(iface_status, 0444, batadv_show_iface_status, NULL);
@@ -162,7 +162,7 @@ index 208655c..fa97940 100644
  #ifdef CONFIG_BATMAN_ADV_BATMAN_V
  BATADV_ATTR_HIF_UINT(elp_interval, bat_v.elp_interval, 0644,
  		     2 * BATADV_JITTER, INT_MAX, NULL);
-@@ -1190,6 +1248,7 @@ static BATADV_ATTR(throughput_override, 0644, batadv_show_throughput_override,
+@@ -1208,6 +1266,7 @@ static BATADV_ATTR(throughput_override, 0644, batadv_show_throughput_override,
  static struct batadv_attribute *batadv_batman_attrs[] = {
  	&batadv_attr_mesh_iface,
  	&batadv_attr_iface_status,
@@ -171,10 +171,10 @@ index 208655c..fa97940 100644
  	&batadv_attr_elp_interval,
  	&batadv_attr_throughput_override,
 diff --git a/net/batman-adv/types.h b/net/batman-adv/types.h
-index a21b34e..080a20f 100644
+index 74b6447..267d200 100644
 --- a/net/batman-adv/types.h
 +++ b/net/batman-adv/types.h
-@@ -227,6 +227,7 @@ struct batadv_hard_iface {
+@@ -215,6 +215,7 @@ struct batadv_hard_iface {
  
  	/** @neigh_list_lock: lock protecting neigh_list */
  	spinlock_t neigh_list_lock;

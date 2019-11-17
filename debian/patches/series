@@ -2,7 +2,12 @@ batman-adv-introduce-no_rebroadcast-option.patch
 batman-adv-Use-broadcast-as-fallback-for-gateway-replies.patch
 batman-adv-Increase-aggregation-time.patch
 batman-adv-Disable-multicast-optimization-by-default.patch
-batman-adv-allow-updating-DAT-entry-timeouts-on-incoming-.patch
-batman-adv-mcast-fix-multicast-tt-tvlv-worker-locking.patch
-batman-adv-fix-for-leaked-TVLV-handler.patch
 batman-adv-Fix-duplicated-OGMs-on-NETDEV_UP.patch
+batman-adv-Fix-netlink-dumping-of-all-mcast_flags-buckets.patch
+batman-adv-fix-uninit-value-in-batadv_netlink_get_ifindex.patch
+batman-adv-Only-read-OGM-tvlv_len-after-buffer-len-check.patch
+batman-adv-Only-read-OGM2-tvlv_len-after-buffer-len-check.patch
+batman-adv-Avoid-free-alloc-race-when-handling-OGM2-buffe.patch
+batman-adv-Avoid-free-alloc-race-when-handling-OGM-buffer.patch
+batman-adv-Introduce-own-OGM2-buffer-mutex.patch
+batman-adv-Avoid-OGM-workqueue-synchronous-cancel-deadloc.patch
