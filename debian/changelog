@@ -1,4 +1,4 @@
-batman-adv (2019.2-1) UNRELEASED; urgency=medium
+batman-adv (2019.2-1) buster; urgency=medium
 
   * New Upstream Version (openwrt-routing 2019.2-4)
 
