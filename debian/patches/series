@@ -11,3 +11,4 @@ batman-adv-Avoid-free-alloc-race-when-handling-OGM2-buffe.patch
 batman-adv-Avoid-free-alloc-race-when-handling-OGM-buffer.patch
 batman-adv-Introduce-own-OGM2-buffer-mutex.patch
 batman-adv-Avoid-OGM-workqueue-synchronous-cancel-deadloc.patch
+batman-adv-Fix-DAT-candidate-selection-on-little-endian-s.patch
