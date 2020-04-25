@@ -13,3 +13,7 @@ batman-adv-Introduce-own-OGM2-buffer-mutex.patch
 batman-adv-Avoid-OGM-workqueue-synchronous-cancel-deadloc.patch
 batman-adv-Fix-DAT-candidate-selection-on-little-endian-s.patch
 batman-adv-Don-t-schedule-OGM-for-disabled-interface.patch
+batman-adv-fix-batadv_nc_random_weight_tq.patch
+batman-adv-Fix-refcnt-leak-in-batadv_show_throughput_over.patch
+batman-adv-Fix-refcnt-leak-in-batadv_store_throughput_ove.patch
+batman-adv-Fix-refcnt-leak-in-batadv_v_ogm_process.patch
