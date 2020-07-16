@@ -1,7 +1,6 @@
 batman-adv-introduce-no_rebroadcast-option.patch
 batman-adv-Use-broadcast-as-fallback-for-gateway-replies.patch
 batman-adv-Increase-aggregation-time.patch
-batman-adv-Disable-multicast-optimization-by-default.patch
 batman-adv-Fix-duplicated-OGMs-on-NETDEV_UP.patch
 batman-adv-Fix-netlink-dumping-of-all-mcast_flags-buckets.patch
 batman-adv-fix-uninit-value-in-batadv_netlink_get_ifindex.patch
