@@ -17,3 +17,4 @@ batman-adv-fix-batadv_nc_random_weight_tq.patch
 batman-adv-Fix-refcnt-leak-in-batadv_show_throughput_over.patch
 batman-adv-Fix-refcnt-leak-in-batadv_store_throughput_ove.patch
 batman-adv-Fix-refcnt-leak-in-batadv_v_ogm_process.patch
+batman-adv-Revert-disable-ethtool-link-speed-detection-wh.patch
