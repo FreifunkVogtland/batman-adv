@@ -20,3 +20,9 @@ batman-adv-Revert-disable-ethtool-link-speed-detection-wh.patch
 batman-adv-Avoid-uninitialized-chaddr-when-handling-DHCP.patch
 batman-adv-Fix-own-OGM-check-in-aggregated-OGMs.patch
 batman-adv-bla-use-netif_rx_ni-when-not-in-interrupt-cont.patch
+batman-adv-bla-fix-type-misuse-for-backbone_gw-hash-index.patch
+batman-adv-mcast-TT-fix-wrongly-dropped-or-rerouted-packe.patch
+batman-adv-Add-missing-include-for-in_interrupt.patch
+batman-adv-mcast-fix-duplicate-mcast-packets-in-BLA-backb.patch
+batman-adv-mcast-fix-duplicate-mcast-packets-in-BLA-backb-1.patch
+batman-adv-mcast-fix-duplicate-mcast-packets-from-BLA-bac.patch
