@@ -1,3 +1,9 @@
+batman-adv (2019.2-8) UNRELEASED; urgency=medium
+
+  * Import patches from openwrt-routing 2019.2-11
+
+ -- Sven Eckelmann <sven@narfation.org>  Thu, 28 Jan 2021 22:09:24 +0100
+
 batman-adv (2019.2-7) buster; urgency=medium
 
   * Import patches from openwrt-routing 2019.2-10

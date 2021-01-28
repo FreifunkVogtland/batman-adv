@@ -26,3 +26,7 @@ batman-adv-Add-missing-include-for-in_interrupt.patch
 batman-adv-mcast-fix-duplicate-mcast-packets-in-BLA-backb.patch
 batman-adv-mcast-fix-duplicate-mcast-packets-in-BLA-backb-1.patch
 batman-adv-mcast-fix-duplicate-mcast-packets-from-BLA-bac.patch
+batman-adv-set-.owner-to-THIS_MODULE.patch
+batman-adv-Consider-fragmentation-for-needed_headroom.patch
+batman-adv-Reserve-needed_-room-for-fragments.patch
+batman-adv-Don-t-always-reallocate-the-fragmentation-skb-.patch
