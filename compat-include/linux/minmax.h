@@ -7,14 +7,14 @@
  * of the Linux kernel.
  */
 
-#ifndef _NET_BATMAN_ADV_COMPAT_LINUX_BUILD_BUG_H_
-#define _NET_BATMAN_ADV_COMPAT_LINUX_BUILD_BUG_H_
+#ifndef _NET_BATMAN_ADV_COMPAT_LINUX_MINMAX_H_
+#define _NET_BATMAN_ADV_COMPAT_LINUX_MINMAX_H_
 
 #include <linux/version.h>
-#if LINUX_VERSION_IS_GEQ(4, 13, 0)
-#include_next <linux/build_bug.h>
+#if LINUX_VERSION_IS_GEQ(5, 10, 0)
+#include_next <linux/minmax.h>
 #else
-#include <linux/bug.h>
+#include <linux/kernel.h>
 #endif
 
-#endif /* _NET_BATMAN_ADV_COMPAT_LINUX_BUILD_BUG_H_ */
+#endif /* _NET_BATMAN_ADV_COMPAT_LINUX_MINMAX_H_ */

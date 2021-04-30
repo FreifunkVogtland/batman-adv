@@ -1,27 +1,23 @@
 # SPDX-License-Identifier: GPL-2.0
-# Copyright (C) 2007-2019  B.A.T.M.A.N. contributors:
+# Copyright (C) 2007-2020  B.A.T.M.A.N. contributors:
 #
 # Marek Lindner, Simon Wunderlich
 
 # read README.external for more information about the configuration
-# batman-adv DebugFS entries:
-export CONFIG_BATMAN_ADV_DEBUGFS=n
-# B.A.T.M.A.N. debugging:
-export CONFIG_BATMAN_ADV_DEBUG=n
+# B.A.T.M.A.N. V routing algorithm (experimental):
+export CONFIG_BATMAN_ADV_BATMAN_V=y
 # B.A.T.M.A.N. bridge loop avoidance:
 export CONFIG_BATMAN_ADV_BLA=y
 # B.A.T.M.A.N. distributed ARP table:
 export CONFIG_BATMAN_ADV_DAT=y
-# B.A.T.M.A.N network coding (catwoman):
-export CONFIG_BATMAN_ADV_NC=n
+# B.A.T.M.A.N. debugging:
+export CONFIG_BATMAN_ADV_DEBUG=n
 # B.A.T.M.A.N. multicast optimizations:
 export CONFIG_BATMAN_ADV_MCAST=y
-# B.A.T.M.A.N. sysfs support:
-export CONFIG_BATMAN_ADV_SYSFS=y
+# B.A.T.M.A.N network coding (catwoman):
+export CONFIG_BATMAN_ADV_NC=n
 # B.A.T.M.A.N. tracing support:
 export CONFIG_BATMAN_ADV_TRACING=n
-# B.A.T.M.A.N. V routing algorithm (experimental):
-export CONFIG_BATMAN_ADV_BATMAN_V=y
 
 PWD:=$(shell pwd)
 KERNELPATH ?= /lib/modules/$(shell uname -r)/build
@@ -49,8 +45,6 @@ ifneq ($(REVISION),)
 NOSTDINC_FLAGS += -DBATADV_SOURCE_VERSION=\"$(REVISION)\"
 endif
 
-include $(PWD)/compat-sources/Makefile
-
 obj-y += net/batman-adv/
 
 export batman-adv-y
@@ -62,12 +56,10 @@ BUILD_FLAGS := \
 	REVISION=$(REVISION) \
 	CONFIG_BATMAN_ADV=m \
 	CONFIG_BATMAN_ADV_DEBUG=$(CONFIG_BATMAN_ADV_DEBUG) \
-	CONFIG_BATMAN_ADV_DEBUGFS=$(CONFIG_BATMAN_ADV_DEBUGFS) \
 	CONFIG_BATMAN_ADV_BLA=$(CONFIG_BATMAN_ADV_BLA) \
 	CONFIG_BATMAN_ADV_DAT=$(CONFIG_BATMAN_ADV_DAT) \
 	CONFIG_BATMAN_ADV_NC=$(CONFIG_BATMAN_ADV_NC) \
 	CONFIG_BATMAN_ADV_MCAST=$(CONFIG_BATMAN_ADV_MCAST) \
-	CONFIG_BATMAN_ADV_SYSFS=$(CONFIG_BATMAN_ADV_SYSFS) \
 	CONFIG_BATMAN_ADV_TRACING=$(CONFIG_BATMAN_ADV_TRACING) \
 	CONFIG_BATMAN_ADV_BATMAN_V=$(CONFIG_BATMAN_ADV_BATMAN_V) \
 	INSTALL_MOD_DIR=updates/

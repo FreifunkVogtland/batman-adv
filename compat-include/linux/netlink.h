@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: GPL-2.0 */
-/* Copyright (C) 2007-2019  B.A.T.M.A.N. contributors:
+/* Copyright (C) 2007-2020  B.A.T.M.A.N. contributors:
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -13,7 +13,7 @@
 #include <linux/version.h>
 #include_next <linux/netlink.h>
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 7, 0)
+#if LINUX_VERSION_IS_LESS(4, 7, 0)
 
 #include_next <net/netlink.h>
 
@@ -97,6 +97,6 @@ static inline int batadv_nla_put_u64_64bit(struct sk_buff *skb, int attrtype,
 				    padattr);
 }
 
-#endif /* < KERNEL_VERSION(4, 7, 0) */
+#endif /* LINUX_VERSION_IS_LESS(4, 7, 0) */
 
 #endif	/* _NET_BATMAN_ADV_COMPAT_LINUX_NETLINK_H_ */

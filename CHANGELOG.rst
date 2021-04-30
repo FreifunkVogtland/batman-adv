@@ -1,5 +1,100 @@
 .. SPDX-License-Identifier: GPL-2.0
 
+2021.0 (2021-01-28)
+===================
+
+* support latest kernels (4.4 - 5.11)
+* coding style cleanups and refactoring
+* drop support for sysfs+debugfs
+* allow to select routing algorithm during creation of interface
+* bugs squashed:
+
+  - allocate enough reserved room on fragments for lower devices
+
+2020.4 (2020-10-27)
+===================
+
+* support latest kernels (4.4 - 5.10)
+* coding style cleanups and refactoring
+* bugs squashed:
+
+  - fix incorrect reroute handling of multicast packets
+  - improve handling of multicast packets by bridge loop avoidance
+
+2020.3 (2020-08-24)
+===================
+
+* support latest kernels (4.4 - 5.9)
+* coding style cleanups and refactoring
+* introduce a configurable per interface hop penalty
+* bugs squashed:
+
+  - avoid uninitialized chaddr when handling DHCP
+  - fix own OGMv2 check in aggregation receive handling
+  - fix "NOHZ: local_softirq_pending 08" warnings caused by BLA
+
+2020.2 (2020-07-06)
+===================
+
+* support latest kernels (4.4 - 5.8)
+* coding style cleanups and refactoring
+* dropped support for kernels < 4.4
+* re-enabled link speed detection for interfaces without auto negotiation
+
+2020.1 (2020-04-24)
+===================
+
+* support latest kernels (3.16 - 5.7)
+* coding style cleanups and refactoring
+* bugs squashed:
+
+  - fix reference leaks in throughput_override sysfs file
+  - fix reference leak in B.A.T.M.A.N. V OGM error handling
+  - fix network coding random weighting
+
+2020.0 (2020-03-04)
+===================
+
+* support latest kernels (3.16 - 5.6)
+* coding style cleanups and refactoring
+* use wifi tx rates as fallback for the B.A.T.M.A.N. V throughput estimation
+* disable deprecated sysfs support by default
+* bugs squashed:
+
+  - fix crash during the scheduling of OGMs for removed interfaces
+
+2019.5 (2019-12-12)
+===================
+
+* support latest kernels (3.16 - 5.5)
+* coding style cleanups and refactoring
+* bugs squashed:
+
+  - fix DAT candidate selection on little endian systems
+
+2019.4 (2019-10-25)
+===================
+
+* support latest kernels (3.16 - 5.4)
+* coding style cleanups and refactoring
+* implement aggregation of OGM2 packets
+* bugs squashed:
+
+  - fix length validation in netlink messages
+  - fix out of buffer read when parsing aggregated packets
+  - avoid race condition in OGM(2) packet modification and submission
+
+2019.3 (2019-08-01)
+===================
+
+* support latest kernels (3.16 - 5.3)
+* coding style cleanups and refactoring
+* add routable multicast optimizations
+* bugs squashed:
+
+  - fix duplicated OGMs on NETDEV_UP
+  - fix dumping of multicast flags
+
 2019.2 (2019-05-23)
 ===================
 

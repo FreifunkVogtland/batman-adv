@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: GPL-2.0 */
-/* Copyright (C) 2007-2019  B.A.T.M.A.N. contributors:
+/* Copyright (C) 2007-2020  B.A.T.M.A.N. contributors:
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -13,18 +13,16 @@
 #include <linux/version.h>
 #include_next <linux/compiler.h>
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+#if LINUX_VERSION_IS_LESS(5, 4, 0)
 
-#ifndef READ_ONCE
-#define READ_ONCE(x) ACCESS_ONCE(x)
+#ifndef fallthrough
+#if __GNUC__ > 7 && !defined(__CHECKER__)
+# define fallthrough                    __attribute__((__fallthrough__))
+#else
+# define fallthrough                    do {} while (0)  /* fallthrough */
+#endif
 #endif
 
-#ifndef WRITE_ONCE
-#define WRITE_ONCE(x, val) ({ \
-	ACCESS_ONCE(x) = (val); \
-})
-#endif
-
-#endif /* < KERNEL_VERSION(3, 19, 0) */
+#endif /* LINUX_VERSION_IS_LESS(5, 4, 0) */
 
 #endif	/* _NET_BATMAN_ADV_COMPAT_LINUX_COMPILER_H_ */

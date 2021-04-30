@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
-/* Copyright (C) 2016-2019  B.A.T.M.A.N. contributors:
+/* Copyright (C) 2016-2020  B.A.T.M.A.N. contributors:
  *
  * Matthias Schiffer
  */
@@ -21,7 +21,9 @@
 #include <linux/if_vlan.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
+#include <linux/limits.h>
 #include <linux/list.h>
+#include <linux/minmax.h>
 #include <linux/netdevice.h>
 #include <linux/netlink.h>
 #include <linux/printk.h>
@@ -30,6 +32,7 @@
 #include <linux/stddef.h>
 #include <linux/types.h>
 #include <net/genetlink.h>
+#include <net/net_namespace.h>
 #include <net/netlink.h>
 #include <net/sock.h>
 #include <uapi/linux/batadv_packet.h>
@@ -48,8 +51,6 @@
 #include "soft-interface.h"
 #include "tp_meter.h"
 #include "translation-table.h"
-
-struct net;
 
 struct genl_family batadv_netlink_family;
 
@@ -164,7 +165,7 @@ batadv_netlink_get_ifindex(const struct nlmsghdr *nlh, int attrtype)
 {
 	struct nlattr *attr = nlmsg_find_attr(nlh, GENL_HDRLEN, attrtype);
 
-	return attr ? nla_get_u32(attr) : 0;
+	return (attr && nla_len(attr) == sizeof(u32)) ? nla_get_u32(attr) : 0;
 }
 
 /**
@@ -640,7 +641,7 @@ batadv_netlink_tp_meter_put(struct sk_buff *msg, u32 cookie)
  * @bat_priv: the bat priv with all the soft interface information
  * @dst: destination of tp_meter session
  * @result: reason for tp meter session stop
- * @test_time: total time ot the tp_meter session
+ * @test_time: total time of the tp_meter session
  * @total_bytes: bytes acked to the receiver
  * @cookie: cookie of tp_meter session
  *
@@ -826,6 +827,10 @@ static int batadv_netlink_hardif_fill(struct sk_buff *msg,
 			goto nla_put_failure;
 	}
 
+	if (nla_put_u8(msg, BATADV_ATTR_HOP_PENALTY,
+		       atomic_read(&hard_iface->hop_penalty)))
+		goto nla_put_failure;
+
 #ifdef CONFIG_BATMAN_ADV_BATMAN_V
 	if (nla_put_u32(msg, BATADV_ATTR_ELP_INTERVAL,
 			atomic_read(&hard_iface->bat_v.elp_interval)))
@@ -920,9 +925,15 @@ static int batadv_netlink_set_hardif(struct sk_buff *skb,
 {
 	struct batadv_hard_iface *hard_iface = info->user_ptr[1];
 	struct batadv_priv *bat_priv = info->user_ptr[0];
+	struct nlattr *attr;
+
+	if (info->attrs[BATADV_ATTR_HOP_PENALTY]) {
+		attr = info->attrs[BATADV_ATTR_HOP_PENALTY];
+
+		atomic_set(&hard_iface->hop_penalty, nla_get_u8(attr));
+	}
 
 #ifdef CONFIG_BATMAN_ADV_BATMAN_V
-	struct nlattr *attr;
 
 	if (info->attrs[BATADV_ATTR_ELP_INTERVAL]) {
 		attr = info->attrs[BATADV_ATTR_ELP_INTERVAL];
@@ -1340,7 +1351,7 @@ static void batadv_post_doit(const struct genl_ops *ops, struct sk_buff *skb,
 	}
 }
 
-static const struct genl_ops batadv_netlink_ops[] = {
+static const struct genl_small_ops batadv_netlink_ops[] = {
 	{
 		.cmd = BATADV_CMD_GET_MESH,
 		.validate = GENL_DONT_VALIDATE_STRICT | GENL_DONT_VALIDATE_DUMP,
@@ -1474,8 +1485,8 @@ struct genl_family batadv_netlink_family __ro_after_init = {
 	.pre_doit = batadv_pre_doit,
 	.post_doit = batadv_post_doit,
 	.module = THIS_MODULE,
-	.ops = batadv_netlink_ops,
-	.n_ops = ARRAY_SIZE(batadv_netlink_ops),
+	.small_ops = batadv_netlink_ops,
+	.n_small_ops = ARRAY_SIZE(batadv_netlink_ops),
 	.mcgrps = batadv_netlink_mcgrps,
 	.n_mcgrps = ARRAY_SIZE(batadv_netlink_mcgrps),
 };

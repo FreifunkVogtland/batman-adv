@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: GPL-2.0 */
-/* Copyright (C) 2007-2019  B.A.T.M.A.N. contributors:
+/* Copyright (C) 2007-2020  B.A.T.M.A.N. contributors:
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -13,65 +13,44 @@
 #include <linux/version.h>
 #include_next <linux/if_bridge.h>
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 16, 0)
+#if LINUX_VERSION_IS_LESS(5, 10, 0)
 
-struct br_ip {
+struct batadv_br_ip {
 	union {
 		__be32  ip4;
 #if IS_ENABLED(CONFIG_IPV6)
 		struct in6_addr ip6;
 #endif
-	} u;
+	} dst;
 	__be16          proto;
 	__u16           vid;
 };
 
-struct br_ip_list {
+struct batadv_br_ip_list {
 	struct list_head list;
-	struct br_ip addr;
+	struct batadv_br_ip addr;
 };
 
-#endif /* < KERNEL_VERSION(3, 16, 0) */
-
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 16, 0) || \
-    LINUX_VERSION_CODE == KERNEL_VERSION(3, 16, 0) && \
-	(!IS_ENABLED(CONFIG_BRIDGE) || \
-	!IS_ENABLED(CONFIG_BRIDGE_IGMP_SNOOPING))
-
-#define br_multicast_list_adjacent(dev, br_ip_list) \
-	batadv_br_multicast_list_adjacent(dev, br_ip_list)
-
-#define br_multicast_has_querier_adjacent(dev, proto) \
-	batadv_br_multicast_has_querier_adjacent(dev, proto)
-
-static inline int
-batadv_br_multicast_list_adjacent(struct net_device *dev,
-				  struct list_head *br_ip_list)
+/* "static" dropped to force compiler to evaluate it as part of multicast.c
+ * might need to be added again and then called in some kind of dummy
+ * compat.c in case this header is included in multiple files.
+ */
+inline void __batadv_br_ip_list_check(void)
 {
-	return 0;
+	BUILD_BUG_ON(sizeof(struct batadv_br_ip_list) != sizeof(struct br_ip_list));
+	BUILD_BUG_ON(offsetof(struct batadv_br_ip_list, list) != offsetof(struct br_ip_list, list));
+	BUILD_BUG_ON(offsetof(struct batadv_br_ip_list, addr) != offsetof(struct br_ip_list, addr));
+
+	BUILD_BUG_ON(sizeof(struct batadv_br_ip) != sizeof(struct br_ip));
+	BUILD_BUG_ON(offsetof(struct batadv_br_ip, dst.ip4) != offsetof(struct br_ip, u.ip4));
+	BUILD_BUG_ON(offsetof(struct batadv_br_ip, dst.ip6) != offsetof(struct br_ip, u.ip6));
+	BUILD_BUG_ON(offsetof(struct batadv_br_ip, proto) != offsetof(struct br_ip, proto));
+	BUILD_BUG_ON(offsetof(struct batadv_br_ip, vid) != offsetof(struct br_ip, vid));
 }
 
-static inline bool
-batadv_br_multicast_has_querier_adjacent(struct net_device *dev, int proto)
-{
-	return false;
-}
+#define br_ip batadv_br_ip
+#define br_ip_list batadv_br_ip_list
 
-#endif /* < KERNEL_VERSION(3, 16, 0) ||
-	* == KERNEL_VERSION(3, 16, 0) &&
-	* (!IS_ENABLED(CONFIG_BRIDGE) ||
-	* !IS_ENABLED(CONFIG_BRIDGE_IGMP_SNOOPING)) */
+#endif /* LINUX_VERSION_IS_LESS(5, 10, 0) */
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0)
-
-static inline bool br_multicast_has_querier_anywhere(struct net_device *dev,
-						     int proto)
-{
-	pr_warn_once("Old kernel detected (< 3.17) - multicast optimizations disabled\n");
-
-	return false;
-}
-
-#endif /* < KERNEL_VERSION(3, 17, 0) */
-
-#endif	/* _NET_BATMAN_ADV_COMPAT_LINUX_IF_BRIDGE_H_ */
+#endif /* _NET_BATMAN_ADV_COMPAT_LINUX_IF_BRIDGE_H_ */
