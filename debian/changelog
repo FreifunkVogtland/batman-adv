@@ -1,11 +1,11 @@
-batman-adv (2021.0-1) UNRELEASED; urgency=medium
+batman-adv (2021.0-1) buster; urgency=medium
 
   * New Upstream Version (openwrt-routing 2021.0-1)
   * debian/patches:
     - Add batman-adv-initialize-struct-batadv_tvlv_tt_vlan_data-res.patch,
       initialize "struct batadv_tvlv_tt_vlan_data"->reserved field
 
- -- Sven Eckelmann <sven@narfation.org>  Fri, 30 Apr 2021 22:30:57 +0200
+ -- Sven Eckelmann <sven@narfation.org>  Fri, 30 Apr 2021 22:40:56 +0200
 
 batman-adv (2019.2-8) buster; urgency=medium
 
