@@ -1,1 +1,2 @@
-batman-adv-initialize-struct-batadv_tvlv_tt_vlan_data-res.patch
+0004-batman-adv-Always-send-iface-index-name-in-genlmsg.patch
+0005-batman-adv-Avoid-WARN_ON-timing-related-checks.patch

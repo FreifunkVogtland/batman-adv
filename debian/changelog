@@ -1,3 +1,9 @@
+batman-adv (2021.1-1) bullseye; urgency=medium
+
+  * New Upstream Version (openwrt-routing 2021.1-4)
+
+ -- Sven Eckelmann <sven@narfation.org>  Sun, 29 Aug 2021 09:19:42 +0200
+
 batman-adv (2021.0-1) buster; urgency=medium
 
   * New Upstream Version (openwrt-routing 2021.0-1)

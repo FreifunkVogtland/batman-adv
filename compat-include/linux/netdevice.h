@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: GPL-2.0 */
-/* Copyright (C) 2007-2020  B.A.T.M.A.N. contributors:
+/* Copyright (C) B.A.T.M.A.N. contributors:
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -53,5 +53,18 @@ static inline void batadv_netif_trans_update(struct net_device *dev)
 #define priv_destructor destructor = batadv_softif_free2; t1
 
 #endif /* LINUX_VERSION_IS_LESS(4, 11, 9) */
+
+#if LINUX_VERSION_IS_LESS(5, 10, 0)
+
+#define netif_rx_any_context batadv_netif_rx_any_context
+static inline int batadv_netif_rx_any_context(struct sk_buff *skb)
+{
+	if (in_interrupt())
+		return netif_rx(skb);
+	else
+		return netif_rx_ni(skb);
+}
+
+#endif /* LINUX_VERSION_IS_LESS(5, 10, 0) */
 
 #endif	/* _NET_BATMAN_ADV_COMPAT_LINUX_NETDEVICE_H_ */
