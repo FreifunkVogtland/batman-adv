@@ -22,10 +22,17 @@ adding a lot of extra overhead in the kernel portion.
 
 Signed-off-by: Sven Eckelmann <sven@narfation.org>
 Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/77c7d62618259f22f36427eaa62668e6e1c43090
+---
+ net/batman-adv/bat_iv_ogm.c |  6 ++++++
+ net/batman-adv/bat_v.c      | 10 ++++++++++
+ net/batman-adv/netlink.c    |  8 ++++++++
+ 3 files changed, 24 insertions(+)
 
+diff --git a/net/batman-adv/bat_iv_ogm.c b/net/batman-adv/bat_iv_ogm.c
+index 789f257..680def8 100644
 --- a/net/batman-adv/bat_iv_ogm.c
 +++ b/net/batman-adv/bat_iv_ogm.c
-@@ -1849,6 +1849,8 @@ batadv_iv_ogm_orig_dump_subentry(struct
+@@ -1849,6 +1849,8 @@ batadv_iv_ogm_orig_dump_subentry(struct sk_buff *msg, u32 portid, u32 seq,
  		    orig_node->orig) ||
  	    nla_put(msg, BATADV_ATTR_NEIGH_ADDRESS, ETH_ALEN,
  		    neigh_node->addr) ||
@@ -34,7 +41,7 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/77c7d62618259f
  	    nla_put_u32(msg, BATADV_ATTR_HARD_IFINDEX,
  			neigh_node->if_incoming->net_dev->ifindex) ||
  	    nla_put_u8(msg, BATADV_ATTR_TQ, tq_avg) ||
-@@ -2078,6 +2080,8 @@ batadv_iv_ogm_neigh_dump_neigh(struct sk
+@@ -2078,6 +2080,8 @@ batadv_iv_ogm_neigh_dump_neigh(struct sk_buff *msg, u32 portid, u32 seq,
  
  	if (nla_put(msg, BATADV_ATTR_NEIGH_ADDRESS, ETH_ALEN,
  		    hardif_neigh->addr) ||
@@ -43,7 +50,7 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/77c7d62618259f
  	    nla_put_u32(msg, BATADV_ATTR_HARD_IFINDEX,
  			hardif_neigh->if_incoming->net_dev->ifindex) ||
  	    nla_put_u32(msg, BATADV_ATTR_LAST_SEEN_MSECS,
-@@ -2459,6 +2463,8 @@ static int batadv_iv_gw_dump_entry(struc
+@@ -2459,6 +2463,8 @@ static int batadv_iv_gw_dump_entry(struct sk_buff *msg, u32 portid,
  		    router->addr) ||
  	    nla_put_string(msg, BATADV_ATTR_HARD_IFNAME,
  			   router->if_incoming->net_dev->name) ||
@@ -52,9 +59,11 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/77c7d62618259f
  	    nla_put_u32(msg, BATADV_ATTR_BANDWIDTH_DOWN,
  			gw_node->bandwidth_down) ||
  	    nla_put_u32(msg, BATADV_ATTR_BANDWIDTH_UP,
+diff --git a/net/batman-adv/bat_v.c b/net/batman-adv/bat_v.c
+index e1ca2b8..b98aea9 100644
 --- a/net/batman-adv/bat_v.c
 +++ b/net/batman-adv/bat_v.c
-@@ -145,6 +145,8 @@ batadv_v_neigh_dump_neigh(struct sk_buff
+@@ -146,6 +146,8 @@ batadv_v_neigh_dump_neigh(struct sk_buff *msg, u32 portid, u32 seq,
  
  	if (nla_put(msg, BATADV_ATTR_NEIGH_ADDRESS, ETH_ALEN,
  		    hardif_neigh->addr) ||
@@ -63,7 +72,7 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/77c7d62618259f
  	    nla_put_u32(msg, BATADV_ATTR_HARD_IFINDEX,
  			hardif_neigh->if_incoming->net_dev->ifindex) ||
  	    nla_put_u32(msg, BATADV_ATTR_LAST_SEEN_MSECS,
-@@ -297,6 +299,8 @@ batadv_v_orig_dump_subentry(struct sk_bu
+@@ -298,6 +300,8 @@ batadv_v_orig_dump_subentry(struct sk_buff *msg, u32 portid, u32 seq,
  	if (nla_put(msg, BATADV_ATTR_ORIG_ADDRESS, ETH_ALEN, orig_node->orig) ||
  	    nla_put(msg, BATADV_ATTR_NEIGH_ADDRESS, ETH_ALEN,
  		    neigh_node->addr) ||
@@ -72,22 +81,24 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/77c7d62618259f
  	    nla_put_u32(msg, BATADV_ATTR_HARD_IFINDEX,
  			neigh_node->if_incoming->net_dev->ifindex) ||
  	    nla_put_u32(msg, BATADV_ATTR_THROUGHPUT, throughput) ||
-@@ -737,6 +741,12 @@ static int batadv_v_gw_dump_entry(struct
- 		genlmsg_cancel(msg, hdr);
+@@ -739,6 +743,12 @@ static int batadv_v_gw_dump_entry(struct sk_buff *msg, u32 portid,
  		goto out;
  	}
-+
+ 
 +	if (nla_put_u32(msg, BATADV_ATTR_HARD_IFINDEX,
 +			router->if_incoming->net_dev->ifindex)) {
 +		genlmsg_cancel(msg, hdr);
 +		goto out;
 +	}
- 
++
  	if (nla_put_u32(msg, BATADV_ATTR_BANDWIDTH_DOWN,
  			gw_node->bandwidth_down)) {
+ 		genlmsg_cancel(msg, hdr);
+diff --git a/net/batman-adv/netlink.c b/net/batman-adv/netlink.c
+index f317d20..b6cc746 100644
 --- a/net/batman-adv/netlink.c
 +++ b/net/batman-adv/netlink.c
-@@ -813,6 +813,10 @@ static int batadv_netlink_hardif_fill(st
+@@ -814,6 +814,10 @@ static int batadv_netlink_hardif_fill(struct sk_buff *msg,
  			bat_priv->soft_iface->ifindex))
  		goto nla_put_failure;
  
@@ -98,7 +109,7 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/77c7d62618259f
  	if (nla_put_u32(msg, BATADV_ATTR_HARD_IFINDEX,
  			net_dev->ifindex) ||
  	    nla_put_string(msg, BATADV_ATTR_HARD_IFNAME,
-@@ -1044,6 +1048,10 @@ static int batadv_netlink_vlan_fill(stru
+@@ -1045,6 +1049,10 @@ static int batadv_netlink_vlan_fill(struct sk_buff *msg,
  			bat_priv->soft_iface->ifindex))
  		goto nla_put_failure;
  
