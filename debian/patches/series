@@ -1,2 +1,3 @@
 0004-batman-adv-Always-send-iface-index-name-in-genlmsg.patch
 0005-batman-adv-Avoid-WARN_ON-timing-related-checks.patch
+batman-adv-fix-error-handling.patch
