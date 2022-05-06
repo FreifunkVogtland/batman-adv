@@ -3,3 +3,9 @@
 batman-adv-fix-error-handling.patch
 batman-adv-allow-netlink-usage-in-unprivileged-containers.patch
 batman-adv-mcast-don-t-send-link-local-multicast-to-mcast.patch
+batman-adv-make-mc_forwarding-atomic.patch
+batman-adv-compat-Add-atomic-mc_fowarding-support-for-sta.patch
+batman-adv-Request-iflink-once-in-batadv-on-batadv-check.patch
+batman-adv-Request-iflink-once-in-batadv_get_real_netdevi.patch
+batman-adv-Don-t-expect-inter-netns-unique-iflink-indices.patch
+batman-adv-Don-t-skb_split-skbuffs-with-frag_list.patch
