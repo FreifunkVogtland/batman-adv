@@ -5,3 +5,4 @@ batman-adv-Request-iflink-once-in-batadv_get_real_netdevi.patch
 batman-adv-Don-t-expect-inter-netns-unique-iflink-indices.patch
 batman-adv-Don-t-skb_split-skbuffs-with-frag_list.patch
 batman-adv-Fix-hang-up-with-small-MTU-hard-interface.patch
+batman-adv-Broken-sync-while-rescheduling-delayed-work.patch
