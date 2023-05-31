@@ -32,7 +32,7 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/177ba85fb2d4ca
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/net/batman-adv/distributed-arp-table.c b/net/batman-adv/distributed-arp-table.c
-index 2f008e3..42dcdf5 100644
+index 6968e55..28a939d 100644
 --- a/net/batman-adv/distributed-arp-table.c
 +++ b/net/batman-adv/distributed-arp-table.c
 @@ -101,7 +101,6 @@ static void batadv_dat_purge(struct work_struct *work);

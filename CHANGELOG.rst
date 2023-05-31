@@ -1,6 +1,47 @@
 .. SPDX-License-Identifier: GPL-2.0
 
-2022.0 (2021-02-03)
+2023.1 (2023-05-25)
+===================
+
+* support latest kernels (4.14 - 6.4)
+* drop single unicast transfer optimization for unsnoopable IP addresses
+* prepare infrastructure for multicast packets with multiple unicast destination
+  addresses
+
+2023.0 (2023-01-26)
+===================
+
+* support latest kernels (4.14 - 6.2)
+
+2022.3 (2022-11-10)
+===================
+
+* support latest kernels (4.9 - 6.1)
+* coding style cleanups and refactoring
+* bugs squashed:
+
+  - limit the minimum MTU of hard-interface to avoid
+    "Forced to purge local tt entries" errors
+
+2022.2 (2022-07-26)
+===================
+
+* support latest kernels (4.9 - 5.19)
+
+2022.1 (2022-05-06)
+===================
+
+* support latest kernels (4.9 - 5.18)
+* bugs squashed:
+
+  - resolve "time-of-check-time-of-use" race condition when checking the
+    the network namespace of a lower device
+  - fix sanity check of network devices in different namespaces with
+    colliding IDs
+  - prevent transmission errors after splitting large GRO packets into
+    smaller fragments
+
+2022.0 (2022-02-03)
 ===================
 
 * support latest kernels (4.9 - 5.17)
