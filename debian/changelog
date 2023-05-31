@@ -1,6 +1,7 @@
 batman-adv (2022.0-1) UNRELEASED; urgency=medium
 
   * New Upstream Version (openwrt-routing 2022.0-6)
+  * switch to debhelper 13
 
  -- Sven Eckelmann <sven@narfation.org>  Wed, 31 May 2023 22:13:09 +0200
 
