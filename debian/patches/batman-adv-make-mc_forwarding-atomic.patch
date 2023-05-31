@@ -15,10 +15,10 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/56db7c0540e733
  1 file changed, 4 insertions(+)
 
 diff --git a/net/batman-adv/multicast.c b/net/batman-adv/multicast.c
-index bac9002..248c189 100644
+index f4004cf..b004aa4 100644
 --- a/net/batman-adv/multicast.c
 +++ b/net/batman-adv/multicast.c
-@@ -135,7 +135,11 @@ static u8 batadv_mcast_mla_rtr_flags_softif_get_ipv6(struct net_device *dev)
+@@ -134,7 +134,11 @@ static u8 batadv_mcast_mla_rtr_flags_softif_get_ipv6(struct net_device *dev)
  {
  	struct inet6_dev *in6_dev = __in6_dev_get(dev);
  

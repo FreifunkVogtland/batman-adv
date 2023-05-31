@@ -13,27 +13,12 @@
 #include <linux/version.h>
 #include_next <linux/netdevice.h>
 
-#if LINUX_VERSION_IS_LESS(4, 5, 0)
-
-#define netdev_master_upper_dev_link(dev, upper_dev, upper_priv, upper_info, extack) \
-	netdev_master_upper_dev_link(dev, upper_dev)
-
-#elif LINUX_VERSION_IS_LESS(4, 15, 0)
+#if LINUX_VERSION_IS_LESS(4, 15, 0)
 
 #define netdev_master_upper_dev_link(dev, upper_dev, upper_priv, upper_info, extack) \
 	netdev_master_upper_dev_link(dev, upper_dev, upper_priv, upper_info)
 
 #endif /* LINUX_VERSION_IS_LESS(4, 15, 0) */
-
-#if LINUX_VERSION_IS_LESS(4, 7, 0)
-
-#define netif_trans_update batadv_netif_trans_update
-static inline void batadv_netif_trans_update(struct net_device *dev)
-{
-	dev->trans_start = jiffies;
-}
-
-#endif /* LINUX_VERSION_IS_LESS(4, 7, 0) */
 
 #if LINUX_VERSION_IS_LESS(4, 11, 9)
 
@@ -66,5 +51,28 @@ static inline int batadv_netif_rx_any_context(struct sk_buff *skb)
 }
 
 #endif /* LINUX_VERSION_IS_LESS(5, 10, 0) */
+
+
+#if LINUX_VERSION_IS_LESS(5, 15, 0)
+
+static inline void batadv_dev_put(struct net_device *dev)
+{
+	if (!dev)
+		return;
+
+	dev_put(dev);
+}
+#define dev_put batadv_dev_put
+
+static inline void batadv_dev_hold(struct net_device *dev)
+{
+	if (!dev)
+		return;
+
+	dev_hold(dev);
+}
+#define dev_hold batadv_dev_hold
+
+#endif /* LINUX_VERSION_IS_LESS(5, 15, 0) */
 
 #endif	/* _NET_BATMAN_ADV_COMPAT_LINUX_NETDEVICE_H_ */

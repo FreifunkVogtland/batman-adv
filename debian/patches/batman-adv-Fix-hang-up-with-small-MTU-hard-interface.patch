@@ -33,10 +33,10 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/a124b52ebab91a
  1 file changed, 3 insertions(+)
 
 diff --git a/net/batman-adv/hard-interface.c b/net/batman-adv/hard-interface.c
-index 21daa67..05bf063 100644
+index 35fadb9..7de8a00 100644
 --- a/net/batman-adv/hard-interface.c
 +++ b/net/batman-adv/hard-interface.c
-@@ -730,6 +730,9 @@ int batadv_hardif_enable_interface(struct batadv_hard_iface *hard_iface,
+@@ -698,6 +698,9 @@ int batadv_hardif_enable_interface(struct batadv_hard_iface *hard_iface,
  	int max_header_len = batadv_max_header_len();
  	int ret;
  

@@ -16,10 +16,10 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/f6c0c45356fe3a
  1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/net/batman-adv/hard-interface.c b/net/batman-adv/hard-interface.c
-index 4a6a25d..97ac6ea 100644
+index 8a2b78f..35aa112 100644
 --- a/net/batman-adv/hard-interface.c
 +++ b/net/batman-adv/hard-interface.c
-@@ -150,22 +150,23 @@ static bool batadv_is_on_batman_iface(const struct net_device *net_dev)
+@@ -149,22 +149,23 @@ static bool batadv_is_on_batman_iface(const struct net_device *net_dev)
  	struct net *net = dev_net(net_dev);
  	struct net_device *parent_dev;
  	struct net *parent_net;

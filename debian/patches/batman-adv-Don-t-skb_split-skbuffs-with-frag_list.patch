@@ -28,10 +28,10 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/d467720acaf1b2
  1 file changed, 11 insertions(+)
 
 diff --git a/net/batman-adv/fragmentation.c b/net/batman-adv/fragmentation.c
-index a5d9d80..62c394a 100644
+index 0899a72..c120c7c 100644
 --- a/net/batman-adv/fragmentation.c
 +++ b/net/batman-adv/fragmentation.c
-@@ -477,6 +477,17 @@ int batadv_frag_send_packet(struct sk_buff *skb,
+@@ -475,6 +475,17 @@ int batadv_frag_send_packet(struct sk_buff *skb,
  		goto free_skb;
  	}
  

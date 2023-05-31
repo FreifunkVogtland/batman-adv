@@ -42,10 +42,10 @@ Origin: upstream, https://git.open-mesh.org/batman-adv.git/commit/0aac7a9fbbbeec
  1 file changed, 14 insertions(+), 5 deletions(-)
 
 diff --git a/net/batman-adv/hard-interface.c b/net/batman-adv/hard-interface.c
-index 05d3839..21daa67 100644
+index e2760cf..35fadb9 100644
 --- a/net/batman-adv/hard-interface.c
 +++ b/net/batman-adv/hard-interface.c
-@@ -158,13 +158,15 @@ static bool batadv_is_on_batman_iface(const struct net_device *net_dev)
+@@ -157,13 +157,15 @@ static bool batadv_is_on_batman_iface(const struct net_device *net_dev)
  		return true;
  
  	iflink = dev_get_iflink(net_dev);
@@ -64,7 +64,7 @@ index 05d3839..21daa67 100644
  	/* recurse over the parent device */
  	parent_dev = __dev_get_by_index((struct net *)parent_net, iflink);
  	/* if we got a NULL parent_dev there is something broken.. */
-@@ -224,8 +226,7 @@ static struct net_device *batadv_get_real_netdevice(struct net_device *netdev)
+@@ -223,8 +225,7 @@ static struct net_device *batadv_get_real_netdevice(struct net_device *netdev)
  		return NULL;
  
  	iflink = dev_get_iflink(netdev);
@@ -74,7 +74,7 @@ index 05d3839..21daa67 100644
  		dev_hold(netdev);
  		return netdev;
  	}
-@@ -236,6 +237,14 @@ static struct net_device *batadv_get_real_netdevice(struct net_device *netdev)
+@@ -235,6 +236,14 @@ static struct net_device *batadv_get_real_netdevice(struct net_device *netdev)
  
  	net = dev_net(hard_iface->soft_iface);
  	real_net = batadv_getlink_net(netdev, net);
