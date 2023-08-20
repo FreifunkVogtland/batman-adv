@@ -1,1 +1,7 @@
 batman-adv-Broken-sync-while-rescheduling-delayed-work.patch
+batman-adv-compat-Use-native-kstrtox.h-for-5.10.185.patch
+batman-adv-Do-not-get-eth-header-before-batadv_check_mana.patch
+batman-adv-Trigger-events-for-auto-adjusted-MTU.patch
+batman-adv-Don-t-increase-MTU-when-set-by-user.patch
+batman-adv-Fix-TT-global-entry-leak-when-client-roamed-ba.patch
+batman-adv-Fix-batadv_v_ogm_aggr_send-memory-leak.patch
