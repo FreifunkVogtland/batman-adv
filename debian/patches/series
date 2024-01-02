@@ -6,3 +6,4 @@ batman-adv-Don-t-increase-MTU-when-set-by-user.patch
 batman-adv-Fix-TT-global-entry-leak-when-client-roamed-ba.patch
 batman-adv-Fix-batadv_v_ogm_aggr_send-memory-leak.patch
 batman-adv-Hold-rtnl-lock-during-MTU-update-via-netlink.patch
+batman-adv-compat-Fix-skb_vlan_eth_hdr-conflict-in-stable.patch
