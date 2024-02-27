@@ -7,15 +7,14 @@
  * of the Linux kernel.
  */
 
-#ifndef _NET_BATMAN_ADV_COMPAT_LINUX_KSTRTOX_H_
-#define _NET_BATMAN_ADV_COMPAT_LINUX_KSTRTOX_H_
+#ifndef _NET_BATMAN_ADV_COMPAT_LINUX_SPRINTF_H_
+#define _NET_BATMAN_ADV_COMPAT_LINUX_SPRINTF_H_
 
 #include <linux/version.h>
-#if (LINUX_VERSION_IS_GEQ(5, 10, 185) && LINUX_VERSION_IS_LESS(5, 11, 0)) || \
-    LINUX_VERSION_IS_GEQ(5, 14, 0)
-#include_next <linux/kstrtox.h>
+#if LINUX_VERSION_IS_GEQ(6, 6, 0)
+#include_next <linux/sprintf.h>
 #else
 #include <linux/kernel.h>
 #endif
 
-#endif /* _NET_BATMAN_ADV_COMPAT_LINUX_KSTRTOX_H_ */
+#endif /* _NET_BATMAN_ADV_COMPAT_LINUX_SPRINTF_H_ */

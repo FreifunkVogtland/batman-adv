@@ -1,5 +1,35 @@
 .. SPDX-License-Identifier: GPL-2.0
 
+2024.0 (2024-02-01)
+===================
+
+* support latest kernels (4.19 - 6.8)
+* coding style cleanups and refactoring
+* Add stateless multicast packet format support
+
+2023.3 (2023-11-15)
+===================
+
+* support latest kernels (4.14 - 6.7)
+* coding style cleanups and refactoring
+* only warn about too small MTU when soft interfaces wasn't already reduced
+* bugs squashed:
+
+  - Hold rtnl lock during MTU update via netlink
+
+2023.2 (2023-08-16)
+===================
+
+* support latest kernels (4.14 - 6.5)
+* bugs squashed:
+
+  - avoid potential invalid memory access when processing ELP/OGM2 packets
+  - drop pending DAT worker when interface shuts down
+  - inform network stack about automatically adjusted MTUs
+  - keep user defined MTU limit when MTU is recalculated
+  - fix packet memory leak when sending OGM2 via inactive interfaces
+  - fix TT memory leak for roamed back clients
+
 2023.1 (2023-05-25)
 ===================
 
