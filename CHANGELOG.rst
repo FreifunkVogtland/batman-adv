@@ -1,5 +1,29 @@
 .. SPDX-License-Identifier: GPL-2.0
 
+2024.3 (2024-10-15)
+===================
+
+* support latest kernels (4.19 - 6.12)
+* coding style cleanups and refactoring
+* bugs squashed:
+
+  - avoid processing of translation table updates for out-of-spec VIDs
+
+2024.2 (2024-06-20)
+===================
+
+* support latest kernels (4.19 - 6.10)
+* coding style cleanups and refactoring
+
+2024.1 (2024-04-05)
+===================
+
+* support latest kernels (4.19 - 6.9)
+* coding style cleanups and refactoring
+* bugs squashed:
+
+  - avoid infinite loop while trying to resize local translation table
+
 2024.0 (2024-02-01)
 ===================
 

@@ -1,3 +1,9 @@
+batman-adv (2024.3-1) bookworm-ffv; urgency=medium
+
+  * New Upstream version (openwrt-routing 2024.3-4)
+
+ -- Sven Eckelmann <sven@narfation.org>  Sat, 08 Feb 2025 13:10:02 +0100
+
 batman-adv (2024.0-1) bookworm-ffv; urgency=medium
 
   * New Upstream version (openwrt-routing 2024.0-2)
