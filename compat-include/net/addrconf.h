@@ -13,25 +13,13 @@
 #include <linux/version.h>
 #include_next <net/addrconf.h>
 
-#if LINUX_VERSION_IS_LESS(5, 1, 0)
-
-static inline int batadv_ipv6_mc_check_mld(struct sk_buff *skb)
-{
-	return ipv6_mc_check_mld(skb, NULL);
-}
-
-#define ipv6_mc_check_mld(skb) \
-	batadv_ipv6_mc_check_mld(skb)
-
-#endif /* LINUX_VERSION_IS_LESS(5, 1, 0) */
-
 #if LINUX_VERSION_IS_LESS(5, 13, 0)
 
 static bool batadv_mcast_mla_is_duplicate(u8 *mcast_addr,
 					  struct hlist_head *mcast_list);
 
 static inline int
-compat_batadv_mcast_mla_softif_get_ipv6(struct net_device *dev,
+compat_batadv_mcast_mla_meshif_get_ipv6(struct net_device *dev,
 				 struct hlist_head *mcast_list,
 				 struct batadv_mcast_mla_flags *flags,
 				 u8 *mcast_addr,
@@ -91,7 +79,7 @@ compat_batadv_mcast_mla_softif_get_ipv6(struct net_device *dev,
 
 #define ifmcaddr6 \
 		net_device *orig_dev = dev; \
-		return compat_batadv_mcast_mla_softif_get_ipv6(orig_dev, \
+		return compat_batadv_mcast_mla_meshif_get_ipv6(orig_dev, \
 							       mcast_list, \
 							       flags, \
 							       mcast_addr, \
@@ -99,7 +87,7 @@ compat_batadv_mcast_mla_softif_get_ipv6(struct net_device *dev,
 							       in6_dev = NULL); \
 	} \
 	static inline int \
-	__unused_batadv_mcast_mla_softif_get_ipv6(struct net_device *dev, \
+	__unused_batadv_mcast_mla_meshif_get_ipv6(struct net_device *dev, \
 					     struct hlist_head *mcast_list, \
 					     struct batadv_mcast_mla_flags *flags) \
 	{ \

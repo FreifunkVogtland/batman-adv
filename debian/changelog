@@ -1,3 +1,9 @@
+batman-adv (2025.2-1) trixie-ffv; urgency=medium
+
+  * New upstream version
+
+ -- Sven Eckelmann <sven@narfation.org>  Sat, 09 Aug 2025 21:16:32 +0200
+
 batman-adv (2024.3-1) bookworm-ffv; urgency=medium
 
   * New Upstream version (openwrt-routing 2024.3-4)

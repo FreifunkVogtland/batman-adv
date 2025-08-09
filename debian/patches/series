@@ -1,6 +1,0 @@
-batman-adv-Do-not-send-uninitialized-TT-changes.patch
-batman-adv-Remove-uninitialized-data-in-full-table-TT-res.patch
-batman-adv-Do-not-let-TT-changes-list-grows-indefinitely.patch
-batman-adv-fix-panic-during-interface-removal.patch
-batman-adv-Ignore-neighbor-throughput-metrics-in-error-ca.patch
-batman-adv-Drop-unmanaged-ELP-metric-worker.patch
