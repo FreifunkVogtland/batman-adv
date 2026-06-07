@@ -1,6 +1,8 @@
 batman-adv (2025.4-1) UNRELEASED; urgency=medium
 
   * New upstream version
+  * debian/patches
+    - add fixes from upcoming 2026.2 release
 
  -- Sven Eckelmann <sven@narfation.org>  Sun, 07 Jun 2026 09:59:09 +0200
 
