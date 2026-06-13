@@ -48,3 +48,13 @@ batman-adv-tp_meter-add-only-finished-tp_vars-to-lists.patch
 batman-adv-bla-annotate-lasttime-access-with-READ-WRITE_O.patch
 batman-adv-prevent-ELP-transmission-interval-underflow.patch
 batman-adv-tp_meter-initialize-last_recv_time-during-init.patch
+batman-adv-gw-don-t-deselect-gateway-with-active-hardif.patch
+batman-adv-ensure-bcast-is-writable-before-modifying-TTL.patch
+batman-adv-fix-m-b-cast-csum-after-decrementing-TTL.patch
+batman-adv-tp_meter-restrict-number-of-unacked-list-entri.patch
+batman-adv-tp_meter-annotate-last_recv_time-access-with-R.patch
+batman-adv-tp_meter-prevent-parallel-modifications-of-las.patch
+batman-adv-tp_meter-handle-overlapping-packets.patch
+batman-adv-v-prevent-OGM-aggregation-on-disabled-hardif.patch
+batman-adv-frag-ensure-fragment-is-writable-before-modify.patch
+batman-adv-frag-avoid-underflow-of-TTL.patch
