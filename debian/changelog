@@ -1,3 +1,10 @@
+batman-adv (2025.4-3) trixie-ffv; urgency=medium
+
+  * debian/patches
+    - add new fixes from upcoming 2026.2 release
+
+ -- Sven Eckelmann <sven@narfation.org>  Thu, 18 Jun 2026 19:52:05 +0200
+
 batman-adv (2025.4-2) trixie-ffv; urgency=medium
 
   * debian/patches

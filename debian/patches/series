@@ -58,3 +58,8 @@ batman-adv-tp_meter-handle-overlapping-packets.patch
 batman-adv-v-prevent-OGM-aggregation-on-disabled-hardif.patch
 batman-adv-frag-ensure-fragment-is-writable-before-modify.patch
 batman-adv-frag-avoid-underflow-of-TTL.patch
+batman-adv-tt-don-t-merge-change-entries-with-different-V.patch
+batman-adv-tt-track-roam-count-per-VID.patch
+batman-adv-dat-prevent-false-sharing-between-VLANs.patch
+batman-adv-tvlv-avoid-race-of-cifsnotfound-handler-state.patch
+batman-adv-tvlv-enforce-2-byte-alignment.patch
