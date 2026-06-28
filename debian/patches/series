@@ -63,3 +63,9 @@ batman-adv-tt-track-roam-count-per-VID.patch
 batman-adv-dat-prevent-false-sharing-between-VLANs.patch
 batman-adv-tvlv-avoid-race-of-cifsnotfound-handler-state.patch
 batman-adv-tvlv-enforce-2-byte-alignment.patch
+batman-adv-retrieve-ethhdr-after-potential-skb-realloc-on.patch
+batman-adv-access-unicast_ttvn-skb-data-only-after-skb-re.patch
+batman-adv-gw-acquire-ethernet-header-only-after-skb-real.patch
+batman-adv-dat-acquire-ARP-hw-source-only-after-skb-reall.patch
+batman-adv-bla-reacquire-gw-address-after-skb-realloc.patch
+batman-adv-dat-ensure-accessible-eth_hdr-proto-field.patch
